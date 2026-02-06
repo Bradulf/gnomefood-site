@@ -1,0 +1,8 @@
+{
+  "layers": [
+    { "image": "/images/sky.png", "speed": 0, "start": -80 },
+    { "image": "/images/far-dunes.png", "speed": 0.08, "start": -10 },
+    { "image": "/images/mid-dunes.png", "speed": 0.18, "start": -20 },
+    { "image": "/images/foreground.png", "speed": 0.35, "start": -40 }
+  ]
+}
