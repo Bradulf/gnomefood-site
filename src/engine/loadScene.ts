@@ -4,7 +4,7 @@ export function loadScene(scene: any) {
 
     container.innerHTML = "";
 
-    document.body.style.height = `${window.innerHeight * 4}px`;
+    document.body.style.height = `${window.innerHeight * 8}px`;
 
     scene.layers.forEach((layer: any, index: number) => {
         const img = document.createElement("img");
@@ -38,14 +38,21 @@ export function loadScene(scene: any) {
             const speed = Number(img.dataset.speed);
             const start = Number(img.dataset.start);
 
-            const y = start + scrollY * speed;
+            const y = start + scrollY * speed * 0.45;
 
-            const depth = 1 - speed * 0.25;
+            const baseScale = 1 + speed * 0.05;
+
+            const scrollScale = scrollY * speed * 0.00022;
+
+            const scale = baseScale + scrollScale;
+
+            const fade = Math.max(0.6, 1 - scrollY * speed * 0.00015);
+            img.style.opacity = String(fade);
 
             img.style.transform = `
-                translate3d(0, ${y}px, 0)
-                scale(${depth})
-            `
+            translate3d(0, ${y}px, 0)
+            scale(${scale})
+        `;
         });
     };
 
