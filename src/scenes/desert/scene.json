@@ -1,12 +1,32 @@
 {
-  "id": "scene-001",
-  "order": 1,
   "background": "/images/backgrounds/sky.png",
-  "scrollLength": 8,
-  "strips": [
-    { "image": "/images/desert/04-atmosphere-strip.png", "slot": "atmosphere" },
-    { "image": "/images/desert/03-rear-strip.png", "slot": "rear" },
-    { "image": "/images/desert/02-main-strip.png", "slot": "main" },
-    { "image": "/images/desert/01-front-strip.png", "slot": "front" }
+  "sceneScrollLength": 16,
+  "scenes": [
+    {
+      "id": "scene-001",
+      "order": 1,
+      "strips": [
+        {
+          "image": "/images/scene001/04-atmosphere-strip.png",
+          "slot": "atmosphere"
+        },
+        { "image": "/images/scene001/03-rear-strip.png", "slot": "rear" },
+        { "image": "/images/scene001/02-main-strip.png", "slot": "main" },
+        { "image": "/images/scene001/01-front-strip.png", "slot": "front" }
+      ]
+    },
+    {
+      "id": "scene-002",
+      "order": 2,
+      "strips": [
+        {
+          "image": "/images/scene002/04-atmosphere-strip.png",
+          "slot": "atmosphere"
+        },
+        { "image": "/images/scene002/03-rear-strip.png", "slot": "rear" },
+        { "image": "/images/scene002/02-main-strip.png", "slot": "main" },
+        { "image": "/images/scene002/01-front-strip.png", "slot": "front" }
+      ]
+    }
   ]
 }

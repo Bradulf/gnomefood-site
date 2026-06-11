@@ -1,3 +1,4 @@
-import scene from "./scene.json";
+import worldTimeline from "./scene.json";
+import type { WorldTimeline } from "../../engine/loadScene";
 
-export const desertScene = scene;
+export const desertTimeline = worldTimeline as WorldTimeline;
