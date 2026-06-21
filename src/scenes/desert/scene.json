@@ -5,22 +5,22 @@
     {
       "id": "scene-001",
       "order": 1,
-      "image": "public/images/1-open-desert/1-open-desert.png"
+      "image": "/images/1-open-desert/1-open-desert.png"
     },
     {
       "id": "scene-002",
       "order": 2,
-      "image": "public/images/2-desert-mound/2-desert-mound.png"
+      "image": "/images/2-desert-mound/2-desert-mound.png"
     },
     {
       "id": "scene-003",
       "order": 3,
-      "image": "public/images/3-mound-opening/mound-opening.png"
+      "image": "/images/3-mound-opening/mound-opening.png"
     },
     {
       "id": "scene-004",
       "order": 4,
-      "image": "public/images/4-sporeling-emerges/sporeling-emerges.png"
+      "image": "/images/4-sporeling-emerges/sporeling-emerges.png"
     }
   ]
 }
