@@ -1,32 +1,26 @@
 {
   "background": "/images/backgrounds/sky.png",
-  "sceneScrollLength": 16,
+  "sceneScrollLength": 2.5,
   "scenes": [
     {
       "id": "scene-001",
       "order": 1,
-      "strips": [
-        {
-          "image": "/images/scene001/04-atmosphere-strip.png",
-          "slot": "atmosphere"
-        },
-        { "image": "/images/scene001/03-rear-strip.png", "slot": "rear" },
-        { "image": "/images/scene001/02-main-strip.png", "slot": "main" },
-        { "image": "/images/scene001/01-front-strip.png", "slot": "front" }
-      ]
+      "image": "public/images/1-open-desert/1-open-desert.png"
     },
     {
       "id": "scene-002",
       "order": 2,
-      "strips": [
-        {
-          "image": "/images/scene002/04-atmosphere-strip.png",
-          "slot": "atmosphere"
-        },
-        { "image": "/images/scene002/03-rear-strip.png", "slot": "rear" },
-        { "image": "/images/scene002/02-main-strip.png", "slot": "main" },
-        { "image": "/images/scene002/01-front-strip.png", "slot": "front" }
-      ]
+      "image": "public/images/2-desert-mound/2-desert-mound.png"
+    },
+    {
+      "id": "scene-003",
+      "order": 3,
+      "image": "public/images/3-mound-opening/mound-opening.png"
+    },
+    {
+      "id": "scene-004",
+      "order": 4,
+      "image": "public/images/4-sporeling-emerges/sporeling-emerges.png"
     }
   ]
 }

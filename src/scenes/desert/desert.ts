@@ -1,4 +1,4 @@
-import worldTimeline from "./scene.json";
-import type { WorldTimeline } from "../../engine/loadScene";
+import visualChronicle from "./scene.json";
+import type { VisualChronicle } from "../../engine/loadScene";
 
-export const desertTimeline = worldTimeline as WorldTimeline;
+export const desertChronicle = visualChronicle as VisualChronicle;

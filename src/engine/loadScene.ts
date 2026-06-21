@@ -155,3 +155,129 @@ export function loadWorldTimeline(world: WorldTimeline) {
     }
   });
 }
+// new stuff from here on out above is old :)
+//
+export type ChronicleScene = {
+  id: string;
+  order: number;
+  image: string;
+};
+
+export type VisualChronicle = {
+  background: string;
+  sceneScrollLength?: number;
+  scenes: ChronicleScene[];
+};
+
+type RenderedChronicleScene = {
+  img: HTMLImageElement;
+  sceneIndex: number;
+};
+
+export function loadVisualChronicle(world: VisualChronicle) {
+  const container = document.getElementById("scene")!;
+  const renderedScenes: RenderedChronicleScene[] = [];
+
+  container.innerHTML = "";
+
+  const sceneScrollLength = world.sceneScrollLength ?? 4;
+  const sceneHeight = window.innerHeight * sceneScrollLength;
+
+  document.body.style.height = `${sceneHeight * world.scenes.length}px`;
+
+  const background = document.createElement("img");
+
+  background.src = world.background;
+  background.style.position = "fixed";
+  background.style.top = "0";
+  background.style.left = "0";
+  background.style.width = "100vw";
+  background.style.height = "100vh";
+  background.style.objectFit = "cover";
+  background.style.objectPosition = "center bottom";
+  background.style.pointerEvents = "none";
+  background.style.zIndex = "0";
+
+  container.appendChild(background);
+
+  world.scenes
+    .sort((a, b) => a.order - b.order)
+    .forEach((timelineScene, sceneIndex) => {
+      const img = document.createElement("img");
+
+      img.src = timelineScene.image;
+
+      img.style.position = "fixed";
+      img.style.top = "0";
+      img.style.left = "0";
+      img.style.width = "100vw";
+      img.style.height = "100vh";
+      img.style.objectFit = "contain";
+      img.style.objectPosition = "center bottom";
+      img.style.transformOrigin = "center bottom";
+      img.style.pointerEvents = "none";
+      img.style.willChange = "opacity, transform";
+      img.style.zIndex = String(sceneIndex + 1);
+      img.style.opacity = sceneIndex === 0 ? "1" : "0";
+
+      container.appendChild(img);
+
+      renderedScenes.push({
+        img,
+        sceneIndex,
+      });
+    });
+
+  const update = () => {
+    const scrollY = window.scrollY;
+
+    renderedScenes.forEach(({ img, sceneIndex }) => {
+      const sceneStart = sceneIndex * sceneHeight;
+      const localScroll = scrollY - sceneStart;
+      const progress = Math.min(Math.max(localScroll / sceneHeight, 0), 1);
+
+      const isBeforeScene = scrollY < sceneStart;
+      const isAfterScene = scrollY > sceneStart + sceneHeight;
+
+      let opacity = 1;
+
+      if (isBeforeScene || isAfterScene) {
+        opacity = 0;
+      } else {
+        const fadeWindow = 0.15;
+
+        const fadeIn =
+          sceneIndex === 0 ? 1 : Math.min(progress / fadeWindow, 1);
+
+        const fadeOut = Math.min((1 - progress) / fadeWindow, 1);
+
+        opacity = Math.min(fadeIn, fadeOut);
+      }
+
+      const scale = 1 + progress * 0.03;
+      const y = progress * -20;
+
+      img.style.opacity = String(opacity);
+
+      img.style.transform = `
+        translate3d(0, ${y}px, 0)
+        scale(${scale})
+      `;
+    });
+  };
+
+  update();
+
+  let ticking = false;
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+
+      ticking = true;
+    }
+  });
+}
