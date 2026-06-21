@@ -101,13 +101,6 @@ export function loadWorldTimeline(world: WorldTimeline) {
 
       const sceneProgress = Math.min(Math.max(localScroll / sceneHeight, 0), 1);
 
-      const stripWindow = 0.25;
-
-      const stripProgress = Math.min(
-        Math.max(sceneProgress / stripWindow, 0),
-        1,
-      );
-
       const stripScroll = localScroll;
 
       const y = start + stripScroll * speed * 0.45;
